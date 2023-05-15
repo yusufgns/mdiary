@@ -1,7 +1,7 @@
 import {createClient} from '@/utils/supabase/supabase-server'
 import Button from '../uı/Button/TextArea'
-import Profil from '../components/ProfilHeader/ProfilsCon'
-import ContentDiary from '@/components/ProfilContent/ContentDiray'
+import Profil from '../components/ProfilHeader/ProfilsComponent'
+import ContentDiary from '@/components/ProfilContent/ContainersProfil'
 
 export default async function Home() {
   const supabase = createClient()
@@ -15,8 +15,7 @@ export default async function Home() {
         h-screen
         m-auto
       '>
-        <Profil></Profil>
-        <ContentDiary></ContentDiary>
+        HOME PAGE
       </div>
     </>
   )

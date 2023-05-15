@@ -1,6 +1,8 @@
 import {createClient} from '@/utils/supabase/supabase-server'
 import {redirect} from 'next/navigation'
 import Deneme from './AuthButton'
+import Profil from '@/components/ProfilHeader/ProfilsComponent'
+import ContentDiary from '@/components/ProfilContent/ContainersProfil'
 
 export default async function Home() {
     const supabase = createClient()
@@ -12,8 +14,17 @@ export default async function Home() {
 
     return (
         <>
-            <Deneme></Deneme>  
-            HOME PAGE
+        <div className='
+            w-[576px]
+            max-w-[576px]
+            h-screen
+            m-auto
+        '>
+            
+            <Deneme></Deneme>
+            <Profil></Profil>
+            <ContentDiary></ContentDiary>
+        </div>
         </>
     )
 }

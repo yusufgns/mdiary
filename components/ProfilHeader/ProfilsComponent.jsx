@@ -21,31 +21,31 @@ export default function ProfilsCon() {
                     height={96}/>
                 </div>
                 <div className='
-                flex 
-                flex-col
-                gap-[0.25rem]
+                    flex 
+                    flex-col
+                    gap-[0.25rem]
                 '>
                     <h1 className='
                         font-bold
                     '>Yusuf Güneş</h1>
                     <p className='
-                        opacity-75
+                        dark:text-[#8D8D8D]
                     '>İstanbul</p>
                     <p className='
-                        opacity-75
+                        dark:text-[#8D8D8D]
                     '>############ 364</p>
                 </div>
             </div>
             <div>
                 <p className='
-                    opacity-75
+                    dark:text-[#8D8D8D]
                     break-words
                     text-ellipsis
                     max-w-[550px]
                     mx-[8px]
                 '>Bio TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST</p>
             </div>
-            <hr className='opacity-75'/>
+            <hr className='opacity-50'/>
         </div>
     )
 }

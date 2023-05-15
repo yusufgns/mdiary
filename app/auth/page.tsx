@@ -7,9 +7,11 @@ const LoginPage = async () => {
     const supabase = createClient()
 
     const {data} = await supabase.auth.getSession()
+    
     if(data.session) {
         return redirect('/')
     }
+
     return (
         <div className="">
            <LoginForm />

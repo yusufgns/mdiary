@@ -22,11 +22,10 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <SupabaseProvider session={supabase}>
-
-          <ThemeProvider attribute='class'>
-            <Headers></Headers>
-            {children}
-          </ThemeProvider>
+            <ThemeProvider attribute='class'>
+              <Headers></Headers>
+              {children}
+            </ThemeProvider>
           </SupabaseProvider>
         </body>
     </html>
