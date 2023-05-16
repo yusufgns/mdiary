@@ -12,6 +12,8 @@ const LoginPage = async () => {
         return redirect('/')
     }
 
+    console.log(data)
+
     return (
         <div className="">
            <LoginForm />

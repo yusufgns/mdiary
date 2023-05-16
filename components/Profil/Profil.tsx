@@ -13,7 +13,7 @@ export default function Home() {
         if(error) {
             console.log('error', error)
         } else {
-            setPosts(data)
+            
         }
     }, [])
 

@@ -34,50 +34,85 @@ export interface Database {
   }
   public: {
     Tables: {
-      posts: {
+      create_children: {
         Row: {
+          children_uid: string
+          content: string | null
           created_at: string | null
-          description: string
           id: number
-          name: string
+          title: string
         }
         Insert: {
+          children_uid: string
+          content?: string | null
           created_at?: string | null
-          description: string
           id?: number
-          name: string
+          title: string
         }
         Update: {
+          children_uid?: string
+          content?: string | null
           created_at?: string | null
-          description?: string
           id?: number
-          name?: string
+          title?: string
         }
       }
-      profiles: {
+      entries: {
         Row: {
-          avatar_url: string | null
-          full_name: string | null
-          id: string
-          updated_at: string | null
-          username: string | null
-          website: string | null
+          children_uid: string
+          content: string | null
+          create_time: string | null
+          id: number
+          situation: string | null
+          time: string
+          title: string
+          username: string
         }
         Insert: {
-          avatar_url?: string | null
-          full_name?: string | null
-          id: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
+          children_uid?: string
+          content?: string | null
+          create_time?: string | null
+          id?: number
+          situation?: string | null
+          time: string
+          title: string
+          username: string
         }
         Update: {
-          avatar_url?: string | null
-          full_name?: string | null
+          children_uid?: string
+          content?: string | null
+          create_time?: string | null
+          id?: number
+          situation?: string | null
+          time?: string
+          title?: string
+          username?: string
+        }
+      }
+      user: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          first_name: string
+          id: string
+          last_name: string | null
+          username: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          first_name: string
+          id: string
+          last_name?: string | null
+          username: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          first_name?: string
           id?: string
-          updated_at?: string | null
-          username?: string | null
-          website?: string | null
+          last_name?: string | null
+          username?: string
         }
       }
     }
@@ -85,13 +120,145 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      http: {
+        Args: {
+          request: Database["public"]["CompositeTypes"]["http_request"]
+        }
+        Returns: Database["public"]["CompositeTypes"]["http_response"]
+      }
+      http_delete:
+        | {
+            Args: {
+              uri: string
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+        | {
+            Args: {
+              uri: string
+              content: string
+              content_type: string
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+      http_get:
+        | {
+            Args: {
+              uri: string
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+        | {
+            Args: {
+              uri: string
+              data: Json
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+      http_head: {
+        Args: {
+          uri: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["http_response"]
+      }
+      http_header: {
+        Args: {
+          field: string
+          value: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["http_header"]
+      }
+      http_list_curlopt: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          curlopt: string
+          value: string
+        }[]
+      }
+      http_patch: {
+        Args: {
+          uri: string
+          content: string
+          content_type: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["http_response"]
+      }
+      http_post:
+        | {
+            Args: {
+              uri: string
+              data: Json
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+        | {
+            Args: {
+              uri: string
+              content: string
+              content_type: string
+            }
+            Returns: Database["public"]["CompositeTypes"]["http_response"]
+          }
+      http_put: {
+        Args: {
+          uri: string
+          content: string
+          content_type: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["http_response"]
+      }
+      http_reset_curlopt: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      http_set_curlopt: {
+        Args: {
+          curlopt: string
+          value: string
+        }
+        Returns: boolean
+      }
+      urlencode:
+        | {
+            Args: {
+              string: string
+            }
+            Returns: string
+          }
+        | {
+            Args: {
+              data: Json
+            }
+            Returns: string
+          }
+        | {
+            Args: {
+              string: string
+            }
+            Returns: string
+          }
     }
     Enums: {
       [_ in never]: never
     }
     CompositeTypes: {
-      [_ in never]: never
+      http_header: {
+        field: string
+        value: string
+      }
+      http_request: {
+        method: unknown
+        uri: string
+        headers: unknown
+        content_type: string
+        content: string
+      }
+      http_response: {
+        status: number
+        content_type: string
+        headers: unknown
+        content: string
+      }
     }
   }
   storage: {

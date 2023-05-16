@@ -6,7 +6,7 @@ const Post = ({post}: {post: PostType}) => {
             fontSize: "1.5rem",
             fontWeight: "bold"
         }}>
-            {post.name}
+            
         </div>
     )
 }

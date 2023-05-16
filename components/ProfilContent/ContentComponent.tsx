@@ -1,5 +1,4 @@
 'use client'
-import { PostType } from "@/types/collection"
 import ContentSituation from './ContentSituation'
 import ContentTime from './ContentTime'
 import InTimeCreateTodo from "./InTİmeCreateTodo"
@@ -8,23 +7,12 @@ import { useCallback, useEffect, useState } from "react"
 
 export default function ContentComponent({posts}: {posts : any}) {;
     const [data, setData] = useState(posts)
-    //bg-[#1E232F]
+    const [times, setTimes] = useState('')
+
 
     useEffect(() => {
-        setData(posts.filter((post: any) => post.username === 'Yusuf'))
+        setData(posts.filter((post: any) => post.username === `yusuf`))
     }, [posts])
-
-    
-
-    const deneme = async () => {
-        try {
-            const filteredPosts = data.filter((post: any) => post.time === '10:00:00');
-            console.log(filteredPosts)
-            
-        } catch (error) {
-            console.log('ERROR', error)
-        }
-    }
 
     return (
         <>
@@ -32,7 +20,7 @@ export default function ContentComponent({posts}: {posts : any}) {;
                 flex 
                 gap-[15px] 
                 flex-col 
-                mt-[15px] 
+                mt-[15px]
                 relative
             ">
                 <div className="
@@ -43,19 +31,20 @@ export default function ContentComponent({posts}: {posts : any}) {;
                     flex
                     justify-center
                 ">
-                    <CreateContent onClick={() => deneme()}></CreateContent>
+                    <CreateContent data={data}></CreateContent>
                 </div>
                     {/* <ContentTime time={time}></ContentTime> */}
 
                 {data.map((post: any) => (
                     <div 
                     className="
-                        flex justify-between break-words
+                        flex 
+                        justify-between 
+                        break-words
                     "
                     key={post.id}>
                         <div>
                             <ContentTime time={post.time}></ContentTime>
-                            <InTimeCreateTodo></InTimeCreateTodo>
                         </div>
 
                         <div className="
@@ -68,18 +57,18 @@ export default function ContentComponent({posts}: {posts : any}) {;
                             py-[15px]
                             px-[22px]
                             rounded-xl
+
                         ">
                             <div className="
                                 flex
                                 items-center
                                 justify-between
                             ">
-                                <p className="break-words w-[300px] max-w-[300px] min-w-[300px] //28Karakter">{post.title}</p>
-                                <ContentSituation type={post.type}></ContentSituation>
+                                {post.title && <p className="break-words w-[300px] max-w-[300px] min-w-[300px] //28Karakter">{post.title}</p>}
+                                {!post.title && <p className="break-words w-[300px] max-w-[300px] min-w-[300px] //28Karakter">{post.create_time}</p>}
+                                <ContentSituation type={post.situation}></ContentSituation>
                             </div>
-                            <div className="mt-[10px]">
-                                <p>{post.description}</p>
-                            </div>
+                            {post.content !== null && <div className="mt-[10px]"> <p>{post.content}</p> </div>}
                         </div>
                     </div>
                 ))}

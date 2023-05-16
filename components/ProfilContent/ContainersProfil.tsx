@@ -1,22 +1,22 @@
 'use client'
 
 import ContentComponent from "./ContentComponent"
-import ContentTime from "./ContentTime"
 import {useState, useCallback, useEffect} from 'react'
 import { PostType } from "@/types/collection"
 import supabase from '@/utils/supabase/supabase-client'
-import { data } from "autoprefixer"
 
-export default function ContentDiary() {
+
+export default function ContentDiary({params}: {params: any}) {
     const [datas, setDatas] = useState<PostType[]>([])
     const [load, setLoad] = useState('true')
+
     const fetchPosts = useCallback(async () => {
         setLoad('true')
-        const { data, error } = await supabase.from('posts').select('*').order('time', );
+        const { data, error } = await supabase.from('entries').select('*').order('time');
         if (error) {
-        console.error(error);
+            console.error(error);
         } else {
-        setDatas(data);
+            setDatas(data);
         }
         setLoad('false')
     }, []);

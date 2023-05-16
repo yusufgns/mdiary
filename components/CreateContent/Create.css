@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .time {
+        @apply
+        py-[7px]
+        w-[90px]
+        text-center
+        font-bold 
+        bg-blue-400
+        rounded-lg
+        h-[40px]
+        mt-[15px]
+        pl-[5px]
+        outline-none
+        outline
+  }
+  .selected {
+    @apply
+        text-[14px]
+        text-center
+        my-auto
+        py-[2px]
+        px-[10px]
+        rounded-xl
+        bg-gray-600
+        w-[122px]
+        outline-none
+  }
+
+  .textarea {
+        @apply
+        rounded-lg
+        max-h-[180px]
+        min-h-[35px]
+        h-auto
+        px-[10px]
+        py-[5px]
+        outline-none
+  }
+}
