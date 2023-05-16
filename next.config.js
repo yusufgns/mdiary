@@ -3,6 +3,7 @@ const nextConfig = {
     experimental: {
         esmExternals: true,
         appDir: true,
+        swcPlugins: [["next-superjson-plugin"]]
     },
 }
 
