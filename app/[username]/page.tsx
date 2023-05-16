@@ -1,4 +1,4 @@
-import AuthButton from './AuthButton'
+import AuthButton from '../../components/AuthButton'
 import Profil from '@/components/ProfilHeader/ProfilsComponent'
 import ContentDiary from '@/components/ProfilContent/ContainersProfil'
 import {createClient} from '@/utils/supabase/supabase-server'

@@ -1,5 +1,5 @@
 'use client'
-import {useSupabase} from '../../components/providers/supabase-provider'
+import {useSupabase} from './providers/supabase-provider'
 
 export default function Logout() {
     const {supabase} = useSupabase()
