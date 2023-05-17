@@ -5,11 +5,6 @@ import Headers from '../components/Headerlans'
 import SupabaseProvider from '../components/providers/supabase-provider'
 import supabase from '../utils/supabase/supabase-client'
 
-export const metadata = {
-  title: 'MDiary',
-  description: 'Todo App',
-}
-
 export default function RootLayout({
   children,
 }: {
