@@ -14,7 +14,6 @@ export default function RootLayout({
     <html lang="en">
       <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
       <meta property="og:image" content="https://www.askanonym.com/api/og" />
-
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="askanonym.com" />
       <meta property="twitter:url" content="https://www.askanonym.com" />
