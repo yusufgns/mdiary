@@ -29,7 +29,6 @@ export interface ChildData {
 
 interface props {
   params: string, 
-  getUser:string,
   image: string,
   name: string
 }
