@@ -5,8 +5,7 @@ import ContentDiary from '@/components/ProfilContent/ContainersProfil'
 
 export default async function Home() {
   const supabase = createClient()
-  const {data: activeSession} = await supabase.auth.getSession()
-
+  const {data: activeSession} = await supabase.auth.getUser()
   return (
     <>
       <div className='

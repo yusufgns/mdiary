@@ -2,7 +2,18 @@
 const nextConfig = {
     experimental: {
         esmExternals: true,
-        appDir: true
+        appDir: true,
+    },
+    images: {
+        dangerouslyAllowSVG: true,
+        domains: [
+            "avatars.githubusercontent.com",
+            "api.dicebear.com",
+            "avatars.dicebear.com",
+            "cuyntdohnfibkdznyyfv.supabase.co",
+            "lh3.googleusercontent.com"
+        ],
+        formats: ["image/webp"],
     },
 }
 

@@ -4,6 +4,7 @@ import { useSupabase } from '@/components/providers/supabase-provider';
 import SocialAuth from '@/components/social-auth'
 import { BsDiscord, BsGoogle } from 'react-icons/bs'
 import Image from 'next/image'
+import {useRouter} from 'next/navigation'
 
 
 
@@ -12,10 +13,19 @@ import Image from 'next/image'
 const LoginForm = () => {
     const [ısLogin, setIsLogin] = useState(false)
 
+    const router = useRouter()
+    
     const {supabase} = useSupabase()
+
     async function signInWithGoogle() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
+            options: {
+            queryParams: {
+                access_type: 'offline',
+                prompt: 'consent',
+            },
+            },
         })
     }
 

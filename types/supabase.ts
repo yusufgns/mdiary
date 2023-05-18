@@ -34,27 +34,30 @@ export interface Database {
   }
   public: {
     Tables: {
-      create_children: {
+      children_entries: {
         Row: {
           children_uid: string
           content: string | null
           created_at: string | null
           id: number
-          title: string
+          title: string | null
+          username: string
         }
         Insert: {
           children_uid: string
           content?: string | null
           created_at?: string | null
           id?: number
-          title: string
+          title?: string | null
+          username: string
         }
         Update: {
           children_uid?: string
           content?: string | null
           created_at?: string | null
           id?: number
-          title?: string
+          title?: string | null
+          username?: string
         }
       }
       entries: {
@@ -66,6 +69,7 @@ export interface Database {
           situation: string | null
           time: string
           title: string
+          user_id: string | null
           username: string
         }
         Insert: {
@@ -76,6 +80,7 @@ export interface Database {
           situation?: string | null
           time: string
           title: string
+          user_id?: string | null
           username: string
         }
         Update: {
@@ -86,6 +91,7 @@ export interface Database {
           situation?: string | null
           time?: string
           title?: string
+          user_id?: string | null
           username?: string
         }
       }

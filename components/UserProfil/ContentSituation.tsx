@@ -2,7 +2,7 @@ import React from "react"
 import clsx from 'clsx'
 
 interface Situation {
-    type: string
+    type: string | null
 }
 
 
