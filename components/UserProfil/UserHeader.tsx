@@ -1,8 +1,8 @@
+'use client'
 import Image from "next/image"
-import {createClient} from '@/utils/supabase/supabase-server'
-import { Database } from "@/types/supabase"
-import { SupabaseClient } from "@supabase/supabase-js"
+import supabase from '@/utils/supabase/supabase-client'
 import { redirect } from "next/navigation"
+import { useEffect, useState } from "react"
 
 interface UserHeader {
     params: string,
@@ -11,21 +11,36 @@ interface UserHeader {
     image: string
 }
 
-export default async function UserHeader({params, name, image, getUser}: UserHeader ) {
+interface dataI {
+    last_name: string,
+    first_name: string,
+    username: string,
+    description: string
+}
 
-    const supabase:SupabaseClient<Database> = createClient()
+export default function UserHeader({params, name, image}: UserHeader ) {
+    const [data, setData] = useState('')
+    const [loading, setLoading] = useState(true)
     const param: string = params.user
 
-    const {data: headerData, error} = await supabase.from('user').select('*')
-    const userData: any = headerData?.find((e: any) => e.username == `${param}`)
+    async function fecth() {
+        const {data: headerData, error} = await supabase.from('user').select('*')
+        const userData: any = headerData?.find((e: any) => e.username == `${param}`)
+        setData(userData)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        fecth()
+    })
     
-    if(userData == null) {
+    if(data == null) {
         redirect('/')
     }
 
     return (
         <>
-            {userData !== null && <div className='
+            {data !== null && <div className='
                 flex 
                 flex-col 
                 gap-[20px]
@@ -39,7 +54,7 @@ export default async function UserHeader({params, name, image, getUser}: UserHea
             '>
                 <div className='mr-[25px] rounded-full'>
                     <Image className='rounded-full'
-                    src="/IMG.jpg"
+                    src={image}
                     alt={name}
                     width={96}
                     height={96}/>
@@ -51,9 +66,9 @@ export default async function UserHeader({params, name, image, getUser}: UserHea
                 '>
                     <h1 className='
                         font-bold
-                    '>{userData.first_name} {userData.last_name}</h1>
+                    '>{data.first_name} {data.last_name}</h1>
 
-                    <h3>@{userData.username}</h3>
+                    <h3>@{data.username}</h3>
                     <div>Social Link List</div>
                 </div>
             </div>
@@ -64,7 +79,7 @@ export default async function UserHeader({params, name, image, getUser}: UserHea
                     text-ellipsis
                     max-w-[550px]
                     mx-[8px]
-                '>{userData.description}</p>
+                '>{data.description}</p>
             </div>
             <hr className='dark:opacity-50'/>
         </div>}

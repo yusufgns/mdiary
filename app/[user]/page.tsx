@@ -36,9 +36,8 @@ export default async function User({
             h-screen
             m-auto
             '>
-             <UserHeader params={params} getUser={getUser} image={image} name={name}></UserHeader>
              <Avatar image={image} name={name}></Avatar>
-             <Entries params={params}></Entries>
+             <Entries params={params} image={image} name={name}></Entries>
         </div>
     )
 }
