@@ -16,16 +16,14 @@ interface userDataI {
 export default async function User({
   params,
 }: {
-  params: any
+  params: { user: string };
 }) {
 
     const supabase = createClient()
     const {data: activeSession} = await supabase.auth.getSession()
     const {data: getUser} = await supabase.auth.getUser()
 
-    if(!activeSession.session) {
-        return redirect('/')
-    }
+    
     const image = getUser.user?.user_metadata.avatar_url || ''
     const name = getUser.user?.user_metadata.name || ''
     
@@ -36,8 +34,9 @@ export default async function User({
             h-screen
             m-auto
             '>
-             <Avatar image={image} name={name}></Avatar>
-             <Entries params={params} image={image} name={name}></Entries>
+            <UserHeader params={params}></UserHeader>
+            <Avatar image={image} name={name}></Avatar>
+            <Entries params={params}></Entries>
         </div>
     )
 }
