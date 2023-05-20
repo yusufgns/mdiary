@@ -1,7 +1,8 @@
-import LoginForm from '../../components/login-form'
+import AuthForm from '../../components/authForm'
 import {createClient} from '@/utils/supabase/supabase-server'
 import { useSupabase } from '@/components/providers/supabase-provider';
 import { redirect } from 'next/navigation';
+
 
 const LoginPage = async () => {
     const supabase = createClient()
@@ -12,11 +13,18 @@ const LoginPage = async () => {
         return redirect('/')
     }
 
-    console.log(data)
-
     return (
-        <div className="">
-           <LoginForm />
+        <div className='
+            w-[350px]
+            max-w-[350px]
+            h-screen
+            m-auto
+            '>
+                <div className='h-screen w-[350px] max-w-[350px] flex flex-col justify-center'>
+                    <div>
+                        <AuthForm />
+                    </div>
+                </div>
         </div>
     )
 }

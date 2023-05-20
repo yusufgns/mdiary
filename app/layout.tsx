@@ -31,7 +31,7 @@ export default function RootLayout({
         <body>
           <SupabaseProvider session={supabase}>
             <ThemeProvider attribute='class'>
-              <Headers></Headers>
+            <Headers></Headers>
               {children}
             </ThemeProvider>
           </SupabaseProvider>

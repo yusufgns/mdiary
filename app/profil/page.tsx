@@ -1,4 +1,5 @@
 import {createClient} from '@/utils/supabase/supabase-server'
+import CreateProfil from '@/components/Profil/CreateProfil'
 
 export default async function Profil() {
 
@@ -13,7 +14,12 @@ export default async function Profil() {
     
     
     return (
-        <div>
+        <div className='
+            w-[576px]
+            max-w-[576px]
+            h-screen
+            m-auto
+            '>
             PORFİL
         </div>
     )
