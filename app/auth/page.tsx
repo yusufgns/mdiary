@@ -2,6 +2,8 @@ import AuthForm from '../../components/authForm'
 import {createClient} from '@/utils/supabase/supabase-server'
 import { useSupabase } from '@/components/providers/supabase-provider';
 import { redirect } from 'next/navigation';
+import Social from '@/components/social'
+import { BsDiscord, BsGoogle } from 'react-icons/bs'
 
 
 const LoginPage = async () => {
