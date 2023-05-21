@@ -1,6 +1,6 @@
-import {createClient} from '../../utils/supabase/supabase-server'
-import Avatar from '../../components/UserProfil/Avatar'
-import UserHeader from '../../components/UserProfil/UserHeader'
+import {createClient} from '../../../utils/supabase/supabase-server'
+import Avatar from '../../../components/UserProfil/Avatar'
+import UserHeader from '../../../components/UserProfil/UserHeader'
 import Entries from '@/components/UserProfil/Entries'
 
 interface userDataI {

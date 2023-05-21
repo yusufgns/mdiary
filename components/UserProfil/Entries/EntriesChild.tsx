@@ -28,7 +28,7 @@ export interface EntryData {
   childData: ChildData[]
 }
 
-export default function EntriesComponent({post, params}: {post: EntryData, params: string}) {
+export default function EntriesComponent({post, params}: {post: EntryData, params: {user: string}}) {
 
   const router = useRouter()
   
