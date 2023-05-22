@@ -18,7 +18,7 @@ export default function EntriesMain({data, params}: {data : any, params: {user :
       .delete()
       .eq('id', `${post}`)
       
-      router.replace(`${params.user}`);
+      router.replace(`d/${params.user}`);
     }
 
   return (

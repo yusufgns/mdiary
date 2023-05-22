@@ -38,7 +38,7 @@ export default function EntriesComponent({post, params}: {post: EntryData, param
       .delete()
       .eq('id', `${post}`)
       
-      router.replace(`${params.user}`);
+      router.replace(`d/${params.user}`);
     }
         
 
